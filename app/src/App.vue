@@ -1,30 +1,30 @@
 <template>
     <div id="app">
-        <img src="./assets/logo.png">
         <h1>{{ msg }}</h1>
-        <h2>Essential Links</h2>
-        <ul>
-            <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-            <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-            <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-            <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-        </ul>
-        <h2>Ecosystem</h2>
-        <ul>
-            <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-            <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-            <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-            <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-        </ul>
+        <h2>Components</h2>
+        <p><a href="javascript:void(0)" v-on:click="switchComponent(1)">Component 1</a></p>
+        <p><a href="javascript:void(0)" v-on:click="switchComponent(2)">Component 2</a></p>
+        <p><a href="javascript:void(0)" v-on:click="switchComponent(3)">Component 3</a></p>
+
+        <component1 v-if="activeComponent === 1"></component1>
+        <component2 v-if="activeComponent === 2"></component2>
+        <component3 v-if="activeComponent === 3"></component3>
     </div>
 </template>
 
 <script>
 export default {
     name: 'app',
-    data () {
+    data() {
         return {
-            msg: 'Welcome to Your Vue.js App'
+            msg: 'Welcome to Your Vue.js App',
+            activeComponent: 1
+        }
+    },
+    methods: {
+        switchComponent: function(n) {
+            this.activeComponent = n;
+            console.log("showing component " + this.activeComponent);
         }
     }
 }
